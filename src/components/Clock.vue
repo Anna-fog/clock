@@ -4,26 +4,42 @@
   </div>
 
   <div class="rectangle">
-    <img class="rectangle__svg" alt="rectangle" src="../assets/rectangle.svg">
+
+    <div class="rectangle__svg">
+      <rectangles></rectangles>
+    </div>
 
     <div class="counter">
-      <img class="rectangle__svg" alt="rectangle" src="../assets/timer.svg">
+      <img class="rectangle__timer" alt="rectangle" src="../assets/timer.svg">
 <!--      {{ lifecycle }}-->
     </div>
   </div>
 </template>
+
 <script>
+
+import Rectangles from "./Rectangles";
 export default {
 
   data() {
     return {
-      lifecycle: 2314742400
+      lifecycle: 2314742400,
     }
+  },
+
+  mounted() {
+    const svg = this.$refs.svg;
+    const list = Array.from(svg.querySelectorAll('rect'))
+    list[0].classList.add('border-animation')
+    list[0].classList.add('color-stroke-red')
+  },
+
+  components: {
+    Rectangles
   }
-
 }
-
 </script>
+
 
 <style lang="scss">
 .text  {
@@ -69,12 +85,45 @@ export default {
   color: #FF003D;
 }
 
+.pulsing {
+  animation: 1s ease-in-out pulse infinite;
+}
+
+.color-stroke-red {
+  stroke: #FF003D;
+}
+.color-stroke-black {
+  stroke: #12141C;
+}
+
+.border-animation {
+  animation: 100s enlargeBorderWidth infinite;
+}
+
 @keyframes fadeOutText {
   0% {
     opacity: 1;
   }
   100% {
     opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1
+  }
+  100% {
+    opacity: 0
+  }
+}
+
+@keyframes enlargeBorderWidth {
+  0% {
+    stroke-width: 1
+  }
+  100% {
+    stroke-width: 680
   }
 }
 
