@@ -1,20 +1,23 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <clock></clock>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Clock from './components/Clock'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Clock
   }
 }
 </script>
 
 <style lang="scss">
+body {
+  background-color: #12141C;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
